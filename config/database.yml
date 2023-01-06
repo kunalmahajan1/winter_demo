@@ -1,0 +1,32 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  adapter: postgresql
+  database: backend_auth_dev
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  adapter: postgresql
+  database: backend_auth_test
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: backend_auth_production
+  username: username
+  password: <%= ENV['PROJECT_DATABASE_PASSWORD'] %>
+
+
